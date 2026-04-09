@@ -12,13 +12,21 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        // Get IDs of pets owned by the logged-in client
         $petIds = Auth::user()->pets->pluck('id');
         $appointments = Appointment::whereIn('pet_id', $petIds)
             ->with(['pet', 'vet'])
             ->orderBy('appointment_date', 'desc')
             ->get();
         return view('client.appointments.index', compact('appointments'));
+    }
+
+    public function show(Appointment $appointment)
+    {
+        $petIds = Auth::user()->pets->pluck('id');
+        if (!$petIds->contains($appointment->pet_id)) {
+            abort(403, 'You cannot view this appointment.');
+        }
+        return view('client.appointments.show', compact('appointment'));
     }
 
     public function create()
@@ -37,7 +45,6 @@ class AppointmentController extends Controller
             'reason' => 'required|string|max:500',
         ]);
 
-        // Ensure the pet belongs to the logged-in client
         $pet = Auth::user()->pets()->find($validated['pet_id']);
         if (!$pet) {
             abort(403, 'You cannot book an appointment for a pet you do not own.');

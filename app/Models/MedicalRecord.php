@@ -10,7 +10,13 @@ class MedicalRecord extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pet_id', 'appointment_id', 'diagnosis', 'treatment', 'prescription', 'document_path', 'created_by'
+        'pet_id',
+        'appointment_id',
+        'diagnosis',
+        'treatment',
+        'prescription',
+        'document_path',
+        'created_by',
     ];
 
     public function pet()

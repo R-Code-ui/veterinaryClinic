@@ -34,6 +34,12 @@
                         <x-nav-link :href="route('admin.appointments.index')" :active="request()->routeIs('admin.appointments.*')">
                             {{ __('Manage Appointments') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.reports.today-appointments')" :active="request()->routeIs('admin.reports.today-appointments')">
+                            {{ __('Appointments Report') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.reports.pets-multiple-records')" :active="request()->routeIs('admin.reports.pets-multiple-records')">
+                            {{ __('Pets with >2 Records') }}
+                        </x-nav-link>
                     @endrole
                 </div>
             </div>
@@ -107,6 +113,12 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.appointments.index')" :active="request()->routeIs('admin.appointments.*')">
                     {{ __('Manage Appointments') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.reports.today-appointments')" :active="request()->routeIs('admin.reports.today-appointments')">
+                    {{ __('Appointments Report') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.reports.pets-multiple-records')" :active="request()->routeIs('admin.reports.pets-multiple-records')">
+                    {{ __('Pets with >2 Records') }}
                 </x-responsive-nav-link>
             @endrole
         </div>

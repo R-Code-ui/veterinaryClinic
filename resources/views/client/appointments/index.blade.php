@@ -32,6 +32,7 @@
                                         <th class="border px-4 py-2">Date & Time</th>
                                         <th class="border px-4 py-2">Reason</th>
                                         <th class="border px-4 py-2">Status</th>
+                                        <th class="border px-4 py-2">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +49,12 @@
                                                 @else bg-red-100 text-red-800 @endif">
                                                 {{ ucfirst($appointment->status) }}
                                             </span>
+                                        </td>
+                                        <td class="border px-4 py-2 text-center">
+                                            <a href="{{ route('client.appointments.show', $appointment) }}"
+                                               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm">
+                                                View
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach

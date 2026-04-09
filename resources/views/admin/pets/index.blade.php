@@ -49,6 +49,8 @@
                                 <td class="border px-4 py-2">{{ $pet->breed ?? '—' }}</td>
                                 <td class="border px-4 py-2">{{ $pet->owner->name }}</td>
                                 <td class="border px-4 py-2">
+                                    <a href="{{ route('admin.pets.show', $pet) }}"
+                                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm">View</a>
                                     <a href="{{ route('admin.pets.edit', $pet) }}"
                                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded text-sm">Edit</a>
                                     <form action="{{ route('admin.pets.destroy', $pet) }}" method="POST" class="inline-block">

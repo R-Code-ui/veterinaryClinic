@@ -49,6 +49,12 @@ class ClientPetController extends Controller
         return view('client.pets.edit', compact('pet'));
     }
 
+    public function show(Pet $pet)
+    {
+        $this->authorize('view', $pet);
+        return view('client.pets.show', compact('pet'));
+    }
+
     public function update(Request $request, Pet $pet)
     {
         $this->authorize('update', $pet);

@@ -33,7 +33,8 @@
                                     @endif
                                     <h5 class="font-bold">{{ $pet->name }}</h5>
                                     <p class="text-sm">{{ $pet->species }} @if($pet->breed) - {{ $pet->breed }} @endif</p>
-                                    <div class="mt-2 flex justify-between">
+                                    <div class="mt-2 flex justify-between items-center">
+                                        <a href="{{ route('client.pets.show', $pet) }}" class="text-blue-600 hover:underline">View</a>
                                         <a href="{{ route('client.pets.edit', $pet) }}" class="text-yellow-600 hover:underline">Edit</a>
                                         <form action="{{ route('client.pets.destroy', $pet) }}" method="POST" onsubmit="return confirm('Delete this pet?')">
                                             @csrf
