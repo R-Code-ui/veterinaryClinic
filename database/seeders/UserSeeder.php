@@ -10,11 +10,10 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // First, seed roles and permissions
         $this->call(RolesAndPermissionsSeeder::class);
 
-        // Create Admin user (if not exists)
-        $admin = User::firstOrCreate(
+        // Admin (update if exists)
+        $admin = User::updateOrCreate(
             ['email' => 'admin@example.com'],
             [
                 'name' => 'Admin User',
@@ -24,8 +23,8 @@ class UserSeeder extends Seeder
         );
         $admin->assignRole('Admin');
 
-        // Create Vet user
-        $vet = User::firstOrCreate(
+        // Vet (update if exists)
+        $vet = User::updateOrCreate(
             ['email' => 'vet@example.com'],
             [
                 'name' => 'Dr. Sarah Vet',
@@ -35,20 +34,11 @@ class UserSeeder extends Seeder
         );
         $vet->assignRole('Vet');
 
-        // Create Receptionist
-        $receptionist = User::firstOrCreate(
-            ['email' => 'reception@example.com'],
-            [
-                'name' => 'Jane Reception',
-                'password' => bcrypt('reception123'),
-                'role' => 'receptionist',
-            ]
-        );
-        $receptionist->assignRole('Receptionist');
-
-        // Create 5 regular clients (if they don't exist)
+        // 5 Clients (update if exists)
+        //example:
+        //email: client1@example.com      password: client123
         for ($i = 1; $i <= 5; $i++) {
-            $client = User::firstOrCreate(
+            $client = User::updateOrCreate(
                 ['email' => "client$i@example.com"],
                 [
                     'name' => "Client $i",
